@@ -1,0 +1,73 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model MosqueSettings {
+  id              String   @id @default(uuid())
+  name            String   @default("Masjid At Taubah")
+  latitude        Float
+  longitude       Float
+  iqamahIntervals String   // Stored as JSON string
+  whatsappNumber  String?
+  bankAccount     String?  @default("BSI 7123 456 789 a.n. DKM At Taubah")
+  qrisUrl         String?
+}
+
+model Agenda {
+  id              String   @id @default(uuid())
+  title           String
+  speaker         String?
+  date            DateTime
+  startTime       String
+  location        String   @default("Ruang Utama Masjid")
+  description     String?
+  
+  publishToWeb    Boolean  @default(true)
+  publishToTv     Boolean  @default(true)
+  publishToWa     Boolean  @default(false)
+  
+  status          String   @default("PUBLISHED")
+}
+
+model Announcement {
+  id              String   @id @default(uuid())
+  title           String
+  content         String
+  priority        String   @default("NORMAL")
+  validUntil      DateTime
+  
+  publishToWeb    Boolean  @default(true)
+  publishToTv     Boolean  @default(true)
+}
+
+model DonationCampaign {
+  id              String   @id @default(uuid())
+  title           String
+  description     String
+  targetAmount    Float
+  collectedAmount Float    @default(0)
+  status          String   @default("ACTIVE")
+}
+
+model ServiceRequest {
+  id              String   @id @default(uuid())
+  serviceType     String
+  submitterName   String
+  whatsappNumber  String
+  details         String   // Stored as JSON string
+  status          String   @default("PENDING")
+  createdAt       DateTime @default(now())
+}
+
+model User {
+  id              String   @id @default(uuid())
+  name            String
+  email           String   @unique
+  passwordHash    String
+  role            String   @default("CONTENT_ADMIN")
+}

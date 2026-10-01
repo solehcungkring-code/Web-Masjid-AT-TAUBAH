@@ -1,0 +1,234 @@
+.homeContainer {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Header & Hero */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mosqueInfo h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.mosqueInfo p {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.heroCard {
+  padding: 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+  color: white;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 40px -10px rgba(4, 120, 87, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.heroCard::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.prayerName {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+}
+
+.prayerTime {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.countdown {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Prayer Times Horizontal List */
+.prayerList {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scrollbar-width: none; /* Firefox */
+}
+.prayerList::-webkit-scrollbar {
+  display: none; /* Chrome */
+}
+
+.prayerItem {
+  flex: 0 0 calc(33.333% - 0.5rem);
+  padding: 1rem 0.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 80px;
+}
+
+.prayerItem.active {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+.prayerItem.active p { color: rgba(255,255,255,0.8); }
+
+.prayerItem h4 {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+.prayerItem p {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+/* Section Titles */
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.sectionHeader a {
+  font-size: 0.875rem;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* Agenda Card */
+.agendaCard {
+  padding: 1.25rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.agendaDate {
+  background: rgba(4, 120, 87, 0.1);
+  color: var(--color-primary);
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  text-align: center;
+  min-width: 60px;
+}
+.agendaDate span { display: block; }
+.agendaDate .day { font-size: 1.25rem; font-weight: 700; }
+.agendaDate .month { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; }
+
+.agendaInfo h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+.agendaInfo p {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Quick Services Grid */
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.serviceItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+.serviceItem:hover {
+  transform: translateY(-2px);
+}
+
+.serviceIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  background: var(--color-bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.serviceItem span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+/* Bottom Navigation */
+.bottomNav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+  background: var(--color-bg-card);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: env(safe-area-inset-bottom);
+  z-index: 50;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
+}
+
+.navItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--color-text-muted);
+  width: 64px;
+}
+.navItem.active {
+  color: var(--color-primary);
+}
+.navItem span {
+  font-size: 0.65rem;
+  font-weight: 600;
+}
